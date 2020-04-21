@@ -1,0 +1,90 @@
+---
+title: "Data pipeline"
+output: html_notebook
+---
+```{r}
+library(tidyverse)
+```
+```{r}
+write.csv(iris, "iris.csv")
+```
+## Read
+```{r}
+iris_raw = read_csv("iris.csv")
+```
+```{r}
+library(readxl)
+library(writexl)
+write_xlsx(iris, "iris.xlsx")
+read_excel("iris.xlsx")
+```
+
+```{reval=FALSE}
+library(haven)
+write_dta(iris,"iris.dta")
+```
+
+##Exploratory analysis
+DataExplorer 
+```{r}
+DataExplorer::create_report(iris_raw, y= "Species")
+```
+
+## Querying rows
+top n tails
+```{r}
+iris_raw %>%
+  head(10)
+
+iris_raw
+tail(10)
+
+iris_raw %>% 
+  sample_n(10)
+iris_raw %>% 
+  sample_frac(0.10)
+
+head(iris_raw, 10)
+tail(iris_raw, 10)
+sample_n(iris_raw, 10)
+sample_frac(iris_raw, .10)
+```
+WHERE
+```{r}
+iris_raw %>% 
+filter(Species=="setosa",Sepal.Length > 5.5)
+```
+Equal
+Less/ Greater than
+Not equal
+
+TRUE 
+FALSE
+```{r}
+TRUE & TRUE
+TRUE & FALSE
+# YELLOW & (BLUE OR RED)
+TRUE & (FALSE)
+TRUE & TRUE
+```
+```{r}
+iris_raw %>% 
+  filter_if(is.numeric, ~ .< 5)
+```
+```{r}
+iris_raw %>% 
+  filter_if(is.numeric, any_vars(. <1))
+```
+
+
+
+
+
+
+
+
+
+
+
+
+

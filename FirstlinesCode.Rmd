@@ -46,3 +46,33 @@ TRUE
 
 #class Sys.time("")
 #class Sys. timezone ("Europe/London")
+```
+
+
+```{r}
+ex_vector = c (1,2,3,4,5)
+ex_vector=1:5
+ex_vector= 5:-5
+letters
+pi*ex_vector^2
+"Red"== "red"
+sum(1:5)
+Sys.Date()
+Sys.time()
+
+```
+```{r}
+matrix(LETTERS, nrow = 13)
+```
+```{r}
+array(LETTERS [1:24], c (2,2,6))
+```
+```{r}
+data.frame(
+  id =1:5,
+  name = letters [1:5],
+  outcome= rnorm(5)
+)
+iris
+```
+
