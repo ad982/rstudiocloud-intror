@@ -27,4 +27,22 @@ diameter= 12 # this is in inches
 area= pi*(diameter/2)^2
 area
 ```
+```{r}
+diameter=12
+diameter<- 12
+12-> diameter
+```
+```{r}
+3i
+c ("this is text",
+   "this is also text",
+   "this is someone\'s text"
+)
+bloodtypes <-factor(c("A+"))
+```
+```{r}
+TRUE
+# as.numeric(1)
 
+#class Sys.time("")
+#class Sys. timezone ("Europe/London")
