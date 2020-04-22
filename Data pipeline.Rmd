@@ -76,6 +76,14 @@ iris_raw %>%
   filter_if(is.numeric, any_vars(. <1))
 ```
 
+```{r}
+ggplot2movies::"movies" 
+ 
+```
+```{r}
+ggplot2movies::movies
+ movies %>% filter(Action)
+```
 
 
 
