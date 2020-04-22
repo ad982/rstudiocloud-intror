@@ -86,7 +86,8 @@ ggplot2movies:: "movies" %>% select(Action)
 ```
 
 ```{r}
-ggplot2movies::"movies" %>% select_if(-(length>6))
+ggplot2movies::"movies" %>% select_if(-(length>360))
+
 
 
 ```
