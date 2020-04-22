@@ -166,6 +166,7 @@ movies %>%
   ungroup () %>% 
   mutate(per=n/sum(n))
   #summarise (sum(per))
+
   
   
 ```
