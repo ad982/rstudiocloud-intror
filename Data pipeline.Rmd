@@ -97,12 +97,80 @@ library(ggplot2movies)
 movies %>% 
   filter(Action==1)
 movies %>% 
-filter(length<=6*60)
+filter(length<=6*60) 
+movies %>%  # 6 hours in minutes
+  summarise(max(lenght))
 
 movies %>% 
   filter_at(vars(Action:Short),all_vars(. ==0))
 
 ```
+
+```{r}
+iris %>% 
+  select (starts_with("Sepal"))
+iris %>% 
+  select_if(is.numeric) %>% 
+prcomp()
+  
+```
+```{r}
+movies
+movies %>% 
+  rename(budget_if_known=budget)-> 
+  movies_cleaned
+movies %>% 
+  select(budget_if_known=budget, everything())
+```
+# Longer pipelines
+```{r}
+iris %>% 
+  filter(Species=="setosa") %>% 
+  select(starts_with("Sepal."))
+```
+#Changing or adding columns
+```{r}
+iris %>% 
+  mutate (Sepal.Length=Sepal.Length-0.1,Sepal.Area=Sepal.Length*Sepal.Width, Species_trun= str_trunc(as.character(Species),3),Diff.Sepal. Lenght = (Sepal.Length-mean (Sepal.Length))mean(Sepal.Length))
+```
+```{r}
+movies
+movies %>% 
+  mutate(diff_length=length-median (length))-> movies_diff
+
+```
+## Aggregating our data
+group= group_by
+aggreation= summarise
+```{r}
+iris %>% 
+  group_by(Species) %>% 
+  summarise(count=n(), avg.Sepal.Length=mean(Sepal.Length))
+
+iris %>% 
+  group_by(Species) %>% 
+  summarise_all(mean)
+iris %>% 
+  group_by(Species) %>% 
+  mutate
+```
+
+```{r}
+movies %>% 
+  summarise(min(length)/60, max(length)/60)
+
+#proportion by genre
+movies %>% 
+  group_by(Action, Comedy) %>% 
+  summarise(n=n()) %>% 
+  ungroup () %>% 
+  mutate(per=n/sum(n))
+  #summarise (sum(per))
+  
+  
+```
+
+
 
 
 
