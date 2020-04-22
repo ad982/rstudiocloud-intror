@@ -1,0 +1,30 @@
+---
+title: "Data Science"
+output: html_notebook
+---
+
+```{r}
+library(AppliedPredictiveModeling)
+data(AlzheimerDisease)
+alzheimers<-predictors %>% cbind(diagnosis)
+View(alzheimers)
+```
+
+```{r}
+library(PASWR)
+library(DataExplorer)
+library(skimr)
+library(xray)
+library(naniar)
+
+#view(titanic3)
+
+skim(titanic3)
+xray::distributions(titanic3)
+naniar::miss_prop_summary(titanic3)
+
+  
+
+
+```
+

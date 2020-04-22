@@ -1,0 +1,73 @@
+---
+title: "Data visualization"
+output: html_notebook
+---
+```{r}
+library(tidyverse)
+iris %>% 
+  ggplot()+
+  aes(x=Sepal.Width, y= Sepal.Length, colour=Species)+ geom_point()->
+  basic_plot
+
+basic_plot
+library(plotly)
+ggplotly(basic_plot)
+
+basic_plot + aes(x=Petal.Length, y=Petal.Width)
+```
+```{r}
+iris %>% 
+  ggplot()+
+  aes(x=Sepal.Width)+
+  geom_histogram(bins = 10)
+```
+```{r}
+iris %>% 
+  ggplot()+
+  aes(x=Sepal.Width)+
+  geom_density()
+```
+```{r}
+iris %>% 
+  ggplot()+
+  aes(x=Species, y=Sepal.Width)+
+  geom_col()
+```
+```{r}
+movies %>% 
+  group_by(year) %>% 
+  summarise(n=n()) %>% 
+  ggplot()+
+  aes(x=year,y=n)+
+  geom_line()
+```
+```{r}
+basic_plot+
+  ggtitle("Sepal width versus sepal length")
+```
+```{r}
+basic_plot+
+  labs(title = "Sepal width versus sepal length", subtitle = "Scatter plot demonstrating differnces by species", 
+       x= "Sepal Width (cm)",
+       y="Sepal Length (cm)")+
+  theme(legend.position = "top", legend.justification = "left")->
+  basic_plot_themed
+ggsave("basic.pdf",basic_plot_themed,width = 15, height = 15, units="in", dpi = 300)
+```
+```{r}
+basic_plot+
+  facet_wrap(~Species)
+```
+```{r}
+library(datasauRus)
+simpsons_paradox %>% 
+  ggplot()+
+  aes(x,y, colour=dataset)+
+  geom_point(alpha=0.5)+
+  facet_wrap(~dataset)
+```
+
+
+
+
+```
